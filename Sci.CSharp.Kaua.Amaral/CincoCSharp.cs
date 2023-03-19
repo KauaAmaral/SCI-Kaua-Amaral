@@ -12,6 +12,8 @@
 
             for (var i = 0; i < 3; i++)
             {
+                Console.Clear();
+
                 Console.Write($"Digite o nome do {i + 1}° aluno: ");
                 students[i, 0] = Console.ReadLine();
 
@@ -19,23 +21,53 @@
 
                 for (var j = 1; j <= 4; j++)
                 {
-                    Console.Write($"Digite a {j}° nota: ");
-                    students[i, j] = Console.ReadLine();
-                    noteSum += Convert.ToDouble(students[i, j]);
-                }
+                    var numberString = true;
 
+                    while (numberString == true)
+                    {
+                        try
+                        {
+                            Console.Write($"Digite a {j}° nota: ");
+                            students[i, j] = Console.ReadLine();
+                            noteSum += Convert.ToDouble(students[i, j]);
+
+                            if (Convert.ToDouble(students[i, j]) < 0)
+                            {
+                                Console.Clear();
+
+                                Console.WriteLine(@"Nota Inválida!
+");
+
+                                numberString = true;
+                            }
+                            else
+                            {
+                                numberString = false;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine(@"Válido apenas números!
+");
+                        }
+                    }
+                }
                 var average = noteSum / 4;
 
                 students[i, 4] = average.ToString();
             }
+            Console.Clear();
 
-            Console.WriteLine(@$"Alunos e suas médias:");
-            
+            Console.WriteLine(@$"Alunos e suas médias:
+");
+
             for (var i = 0; i < 3; i++)
             {
-                Console.WriteLine($"{students[i, 0]}: {students[i, 4]}");
+                Console.WriteLine($@"{students[i, 0]}: {students[i, 4]}
+");
             }
-
             var higherAverage = double.MinValue;
             var nameHigherAverage = "";
 
@@ -49,13 +81,13 @@
                     nameHigherAverage = students[i, 0];
                 }
             }
-
-            Console.WriteLine($"Aluno com a maior média: {nameHigherAverage} ({higherAverage})");
+            Console.WriteLine(@$"Aluno com a maior média: {nameHigherAverage} média: {higherAverage}
+");
 
             var lowerAverage = double.MaxValue;
             var nameLowerAverage = "";
 
-            for (var i =0; i < 3; i++)
+            for (var i = 0; i < 3; i++)
             {
                 var average = Convert.ToDouble(students[i, 4]);
 
@@ -65,8 +97,7 @@
                     nameLowerAverage = students[i, 0];
                 }
             }
-
-            Console.WriteLine($"Aluno com a menor média: {nameLowerAverage} ({lowerAverage})");
+            Console.WriteLine($"Aluno com a menor média: {nameLowerAverage} média: {lowerAverage}");
         }
     }
 }
