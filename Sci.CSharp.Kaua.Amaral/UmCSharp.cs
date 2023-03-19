@@ -13,6 +13,7 @@
             for (var i = 0; i < numbers.Length; i++)
             {
                 var numberString = true;
+
                 while (numberString == true)
                 {
                     try
