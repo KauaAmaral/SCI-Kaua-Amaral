@@ -33,7 +33,8 @@
                     {
                         Console.Clear();
 
-                        Console.WriteLine("Válido apenas números!");
+                        Console.WriteLine(@"Válido apenas números!
+");
                     }
                 }
             }

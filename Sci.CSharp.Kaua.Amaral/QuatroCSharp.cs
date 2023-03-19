@@ -10,9 +10,28 @@
 
             for (var i = 0; i < numbers.Length; i++)
             {
-                Console.Write($"Digite o {i + 1}° número: ");
-                numbers[i] = Convert.ToDouble(Console.ReadLine());
+                var numberString = true;
+
+                while (numberString == true)
+                {
+                    try
+                    {
+                        Console.Write($"Digite o {i + 1}° número: ");
+                        numbers[i] = Convert.ToDouble(Console.ReadLine());
+
+                        numberString = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Clear();
+
+                        Console.WriteLine(@"Válido apenas números!
+");
+                    }
+                }
             }
+            Console.Clear();
+
             Console.WriteLine($"O valor apresentado na posição três é: {numbers[2]}");
         }
     }

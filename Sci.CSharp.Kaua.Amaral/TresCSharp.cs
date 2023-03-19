@@ -37,7 +37,8 @@
                             {
                                 Console.Clear();
 
-                                Console.WriteLine("Nota inválida!");
+                                Console.WriteLine(@"Nota inválida!
+");
 
                                 numberString = true;
                             }
@@ -50,7 +51,8 @@
                         {
                             Console.Clear();
 
-                            Console.WriteLine("Válido apenas números!");
+                            Console.WriteLine(@"Válido apenas números!
+");
                         }
                     }
                 }
