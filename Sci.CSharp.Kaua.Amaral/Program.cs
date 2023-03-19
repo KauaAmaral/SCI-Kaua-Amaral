@@ -1,11 +1,13 @@
 ﻿using Sci.CSharp.Kaua.Amaral;
 
 Console.WriteLine(@"-----Menu-----
+
 1- UmCSharp
 2- DoisCSharp
 3- TresCSharp
 4- QuatroCSharp
-5- CincoCSharp");
+5- CincoCSharp
+");
 
 var option = 0;
 
@@ -13,7 +15,7 @@ while ((option <= 0) || (option > 5))
 {
     try
     {
-        Console.WriteLine("Digite a opção desejada: ");
+        Console.Write("Digite a opção desejada: ");
         option = Convert.ToInt32(Console.ReadLine());
 
         if ((option <= 0) || (option > 5))

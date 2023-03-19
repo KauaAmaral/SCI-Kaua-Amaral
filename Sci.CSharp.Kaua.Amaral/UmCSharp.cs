@@ -9,33 +9,53 @@
             double[] numbers = new double[5];
             var sum = 0.0;
 
-            // Solicitar a inserção dos 5 números
+
             for (var i = 0; i < numbers.Length; i++)
             {
-                Console.Write($"Digite o {i + 1}° número: ");
-                numbers[i] = Convert.ToDouble(Console.ReadLine());
-                sum += numbers[i];
-            }
+                var numberString = true;
+                while (numberString == true)
+                {
+                    try
+                    {
+                        Console.Write($"Digite o {i + 1}° número: ");
+                        numbers[i] = Convert.ToDouble(Console.ReadLine());
 
-            // Imprimir os números pares
-            Console.Write("Números pares: ");
+                        sum += numbers[i];
+
+                        numberString = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Clear();
+
+                        Console.WriteLine("Válido apenas números!");
+                    }
+                }
+            }
+            Console.Clear();
+
+            Console.WriteLine("Números pares:");
+
             for (var i = 0; i < numbers.Length; i++)
             {
                 if (numbers[i] % 2 == 0)
                     Console.WriteLine(numbers[i]);
             }
 
-            // Imprimir   os números impares
-            Console.Write("Números impares: ");
+            Console.WriteLine(@"
+Números impares: ");
+
             for (var i = 0; i < numbers.Length; i++)
             {
                 if (numbers[i] % 2 != 0)
                     Console.WriteLine(numbers[i]);
             }
 
-            // Calcular e imprimir média geral
             var average = sum / numbers.Length;
-            Console.WriteLine($"Média geral: {average}");
+
+            Console.WriteLine($@"
+Média geral:
+{average}");
         }
     }
 }
