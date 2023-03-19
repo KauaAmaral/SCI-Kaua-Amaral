@@ -11,27 +11,52 @@
             // se a nota for  menor que 6 imprimir Reprovado, senão, se a nota for igual ou maior que 6, imprimir Aprovado.
 
             string name;
-            double note1, note2, note3, note4, average;
+            double[] notes = new double[4];
+            double average;
             char option;
 
             do
             {
+                Console.Clear();
+
                 Console.Write("Nome do aluno: ");
                 name = Console.ReadLine();
 
-                Console.Write("1° nota: ");
-                note1 = Convert.ToDouble(Console.ReadLine());
+                for (var i = 0; i < notes.Length; i++)
+                {
+                    var numberString = true;
 
-                Console.Write("2° nota: ");
-                note2 = Convert.ToDouble(Console.ReadLine());
+                    while (numberString == true)
+                    {
+                        try
+                        {
+                            Console.Write($"{i + 1}° nota: ");
+                            notes[i] = Convert.ToDouble(Console.ReadLine());
 
-                Console.Write("3° nota: ");
-                note3 = Convert.ToDouble(Console.ReadLine());
+                            if (notes[i] < 0)
+                            {
+                                Console.Clear();
 
-                Console.Write("4° nota: ");
-                note4 = Convert.ToDouble(Console.ReadLine());
+                                Console.WriteLine("Nota inválida!");
 
-                average = (note1 + note2 + note3 + note4) / 4;
+                                numberString = true;
+                            }
+                            else
+                            {
+                                numberString = false;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("Válido apenas números!");
+                        }
+                    }
+                }
+                Console.Clear();
+
+                average = (notes[0] + notes[1] + notes[2] + notes[3]) / 4;
 
                 Console.WriteLine(@$"Aluno: {name}
 Média: {average}");
